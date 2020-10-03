@@ -29,11 +29,21 @@ The class to represent a vertex:
 
 class Vertex extends Writable {
 
+
 short tag;                 // 0 for a graph vertex, 1 for a group number
-  long group;                // the group where this vertex belongs to
-  long VID;                  // the vertex ID
-  Vector adjacent;     // the vertex neighbors
-  ...
+
+
+long group;                // the group where this vertex belongs to
+
+
+long VID;                  // the vertex ID
+
+
+Vector adjacent;     // the vertex neighbors
+
+...
+
+
 }
 
 
