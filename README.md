@@ -133,14 +133,17 @@ reduce ( group, values ) =
 The second map-reduce job is repeated 5 times by putting the job in a for-loop. The args vector in main program has the path names: args[0] is the input graph, args[1] is the intermediate directory, and args[2] is the output. The first Map-Reduce job writes on the directory args[1]+"/f0". The second Map-Reduce job reads from the directory args[1]+"/f"+i and writes in the directory args[1]+"/f"+(i+1), where i is the for-loop index you use to repeat the second Map-Reduce job. The final Map-Reduce job reads from args[1]+"/f5" and writes on args[2]. The intermediate results between Map-Reduce jobs must be stored using SequenceFileOutputFormat.
 An empty project3/src/main/java/Graph.java is provided, as well as scripts to build and run this code on Comet Server. There is one small graph in small-graph.txt I had created for testing in local mode. It is the graph shown in the example above. Then, there is a moderate-sized graph large-graph.txt for testing in distributed mode. The solution for the large graph is given at solution-large.txt.
 
-=====================================
 
 
-You can compile Graph.java using: run graph.build
 
-and you can run it in standalone mode over the small graph using: sbatch graph.local.run
-
-You should modify and run your programs in standalone mode until you get the correct result. After you make sure that your program runs correctly in standalone mode, you run it in distributed mode using: sbatch graph.distr.run
-
-
-=====================================
+You can compile Graph.java on Comet(https://www.sdsc.edu/support/user_guides/comet.html)using: 
+```
+run graph.build
+```
+and you can run it in standalone mode over the small graph using:
+```sbatch graph.local.run
+```
+You should modify and run your programs in standalone mode until you get the correct result. After you make sure that your program runs correctly in standalone mode, you run it in distributed mode using: 
+```
+sbatch graph.distr.run
+```
