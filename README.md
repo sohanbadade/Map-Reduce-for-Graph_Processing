@@ -69,9 +69,13 @@ The second map-reduce job is repeated 5 times by putting the job in a for-loop. 
 An empty project3/src/main/java/Graph.java is provided, as well as scripts to build and run this code on Comet Server. There is one small graph in small-graph.txt I had created for testing in local mode. It is the graph shown in the example above. Then, there is a moderate-sized graph large-graph.txt for testing in distributed mode. The solution for the large graph is given at solution-large.txt.
 
 =====================================
+
+
 You can compile Graph.java using: run graph.build
 
 and you can run it in standalone mode over the small graph using: sbatch graph.local.run
 
 You should modify and run your programs in standalone mode until you get the correct result. After you make sure that your program runs correctly in standalone mode, you run it in distributed mode using: sbatch graph.distr.run
+
+
 =====================================
