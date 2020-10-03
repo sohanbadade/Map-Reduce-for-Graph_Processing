@@ -71,9 +71,7 @@ An empty project3/src/main/java/Graph.java is provided, as well as scripts to bu
 =====================================
 You can compile Graph.java using: run graph.build
 
-
 and you can run it in standalone mode over the small graph using: sbatch graph.local.run
-
 
 You should modify and run your programs in standalone mode until you get the correct result. After you make sure that your program runs correctly in standalone mode, you run it in distributed mode using: sbatch graph.distr.run
 =====================================
