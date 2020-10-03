@@ -4,24 +4,44 @@ The purpose of this project is to develop a graph analysis program using Map-Red
 An undirected graph is represented in the input text file using one line per graph vertex. For example, the line
 
 1,2,3,4,5,6,7
+
+
 represents the vertex with ID 1, which is connected to the vertices with IDs 2, 3, 4, 5, 6, and 7.
+
+
 For example, following:
 3,2,1
+
 2,4,3
+
+
 1,3,4,6
+
+
 5,6
+
+
 6,5,7,1
+
+
 0,8,9
+
+
 4,2,1
+
+
 8,0
+
+
 9,0
+
+
 7,6
 
 The project is to write a Map-Reduce program that finds the connected components of any undirected graph and prints the size of these connected components. A connected component of a graph is a subgraph of the graph in which there is a path from any two vertices in the subgraph. For the above graph, there are two connected components: one 0,8,9 and another 1,2,3,4,5,6,7. The program prints the sizes of these connected components: 3 and 7.
 The following pseudo-code finds the connected components. 
 It assigns a unique group number to each vertex (we are using the vertex ID as the group number), and for each graph edge between Vi and Vj, it changes the group number of these vertices to the minimum group number of Vi and Vj. That way, vertices connected together will eventually get the same minimum group number, which is the minimum vertex ID among all vertices in the connected component. 
 
-=====================================
 
 The class to represent a vertex:
 
