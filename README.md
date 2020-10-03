@@ -51,7 +51,9 @@ Class Vertex has two constructors: Vertex(tag,group,VID,adjacent) and Vertex(tag
 First Map-Reduce job:
 
 map ( key, line ) =
+
   parse the line to get the vertex VID and the adjacent vector
+  
   emit( VID, new Vertex(0,VID,VID,adjacent) )
 
 
@@ -60,16 +62,27 @@ Second Map-Reduce job:
 
 
 map ( key, vertex ) =
+
   emit( vertex.VID, vertex )   // pass the graph topology
+  
   for n in vertex.adjacent:
+  
      emit( n, new Vertex(1,vertex.group) )  // send the group # to the adjacent vertices
+     
 reduce ( vid, values ) =
+
   m = Long.MAX_VALUE;
+  
   for v in values {
+  
      if v.tag == 0
+     
         then adj = v.adjacent.clone()     // found the vertex with vid
+        
      m = min(m,v.group)
+     
   }
+  
   emit( m, new Vertex(0,m,vid,adj) )      // new group #
 
 
