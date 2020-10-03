@@ -136,7 +136,7 @@ An empty project3/src/main/java/Graph.java is provided, as well as scripts to bu
 
 
 
-You can compile Graph.java on Comet(https://www.sdsc.edu/support/user_guides/comet.html)using: 
+You can compile Graph.java on Comet(https://www.sdsc.edu/support/user_guides/comet.html) using: 
 ```
 run graph.build
 ```
