@@ -51,11 +51,12 @@ map ( key, line ) =
 
 
 Second Map-Reduce job:
+
+
 map ( key, vertex ) =
   emit( vertex.VID, vertex )   // pass the graph topology
   for n in vertex.adjacent:
      emit( n, new Vertex(1,vertex.group) )  // send the group # to the adjacent vertices
-
 reduce ( vid, values ) =
   m = Long.MAX_VALUE;
   for v in values {
@@ -72,6 +73,8 @@ reduce ( vid, values ) =
 
 
 Final Map-Reduce job:
+
+
 map ( group, value ) =
    emit(group,1)
 
