@@ -19,9 +19,13 @@ For example, following:
 
 The project is to write a Map-Reduce program that finds the connected components of any undirected graph and prints the size of these connected components. A connected component of a graph is a subgraph of the graph in which there is a path from any two vertices in the subgraph. For the above graph, there are two connected components: one 0,8,9 and another 1,2,3,4,5,6,7. The program prints the sizes of these connected components: 3 and 7.
 The following pseudo-code finds the connected components. 
-It assigns a unique group number to each vertex (we are using the vertex ID as the group number), and for each graph edge between Vi and Vj, it changes the group number of these vertices to the minimum group number of Vi and Vj. That way, vertices connected together will eventually get the same minimum group number, which is the minimum vertex ID among all vertices in the connected component. First you need a class to represent a vertex
+It assigns a unique group number to each vertex (we are using the vertex ID as the group number), and for each graph edge between Vi and Vj, it changes the group number of these vertices to the minimum group number of Vi and Vj. That way, vertices connected together will eventually get the same minimum group number, which is the minimum vertex ID among all vertices in the connected component. 
 
 =====================================
+
+The class to represent a vertex:
+
+
 
 class Vertex extends Writable {
 
@@ -31,12 +35,21 @@ short tag;                 // 0 for a graph vertex, 1 for a group number
   Vector adjacent;     // the vertex neighbors
   ...
 }
-Class Vertex must have two constructors: Vertex(tag,group,VID,adjacent) and Vertex(tag,group).
+
+
+
+Class Vertex has two constructors: Vertex(tag,group,VID,adjacent) and Vertex(tag,group).
+
+
+
 First Map-Reduce job:
 
 map ( key, line ) =
   parse the line to get the vertex VID and the adjacent vector
   emit( VID, new Vertex(0,VID,VID,adjacent) )
+
+
+
 Second Map-Reduce job:
 map ( key, vertex ) =
   emit( vertex.VID, vertex )   // pass the graph topology
@@ -51,6 +64,13 @@ reduce ( vid, values ) =
      m = min(m,v.group)
   }
   emit( m, new Vertex(0,m,vid,adj) )      // new group #
+
+
+
+
+
+
+
 Final Map-Reduce job:
 map ( group, value ) =
    emit(group,1)
