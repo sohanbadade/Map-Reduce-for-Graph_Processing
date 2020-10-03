@@ -141,7 +141,8 @@ You can compile Graph.java on Comet(https://www.sdsc.edu/support/user_guides/com
 run graph.build
 ```
 and you can run it in standalone mode over the small graph using:
-```sbatch graph.local.run
+```
+sbatch graph.local.run
 ```
 You should modify and run your programs in standalone mode until you get the correct result. After you make sure that your program runs correctly in standalone mode, you run it in distributed mode using: 
 ```
