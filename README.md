@@ -26,7 +26,7 @@ It assigns a unique group number to each vertex (we are using the vertex ID as t
 The class to represent a vertex:
 
 
-
+```
 class Vertex extends Writable {
 
 
@@ -43,24 +43,26 @@ Vector adjacent;     // the vertex neighbors
 }
 
 
-
-Class Vertex has two constructors: Vertex(tag,group,VID,adjacent) and Vertex(tag,group).
-
+```
+Class Vertex has two constructors: 
+```
+Vertex(tag,group,VID,adjacent) and Vertex(tag,group).
+```
 
 
 First Map-Reduce job:
-
+```
 map ( key, line ) =
 
   parse the line to get the vertex VID and the adjacent vector
   
   emit( VID, new Vertex(0,VID,VID,adjacent) )
 
-
+```
 
 Second Map-Reduce job:
 
-
+```
 map ( key, vertex ) =
 
   emit( vertex.VID, vertex )   // pass the graph topology
@@ -85,14 +87,14 @@ reduce ( vid, values ) =
   
   emit( m, new Vertex(0,m,vid,adj) )      // new group #
 
-
+```
 
 
 
 
 
 Final Map-Reduce job:
-
+```
 
 map ( group, value ) =
    emit(group,1)
@@ -102,8 +104,7 @@ reduce ( group, values ) =
    for v in values
        m = m+v
    emit(group,m)
-   
-   
+   ```
 =====================================
 
 
