@@ -21,7 +21,7 @@ The project is to write a Map-Reduce program that finds the connected components
 The following pseudo-code finds the connected components. 
 It assigns a unique group number to each vertex (we are using the vertex ID as the group number), and for each graph edge between Vi and Vj, it changes the group number of these vertices to the minimum group number of Vi and Vj. That way, vertices connected together will eventually get the same minimum group number, which is the minimum vertex ID among all vertices in the connected component. First you need a class to represent a vertex
 
-=========================
+=====================================
 
 class Vertex extends Writable {
 
@@ -62,6 +62,8 @@ reduce ( group, values ) =
    emit(group,m)
    
 =====================================
+
+
 The second map-reduce job is repeated 5 times by putting the job in a for-loop. The args vector in main program has the path names: args[0] is the input graph, args[1] is the intermediate directory, and args[2] is the output. The first Map-Reduce job writes on the directory args[1]+"/f0". The second Map-Reduce job reads from the directory args[1]+"/f"+i and writes in the directory args[1]+"/f"+(i+1), where i is the for-loop index you use to repeat the second Map-Reduce job. The final Map-Reduce job reads from args[1]+"/f5" and writes on args[2]. The intermediate results between Map-Reduce jobs must be stored using SequenceFileOutputFormat.
 An empty project3/src/main/java/Graph.java is provided, as well as scripts to build and run this code on Comet Server. There is one small graph in small-graph.txt I had created for testing in local mode. It is the graph shown in the example above. Then, there is a moderate-sized graph large-graph.txt for testing in distributed mode. The solution for the large graph is given at solution-large.txt.
 
