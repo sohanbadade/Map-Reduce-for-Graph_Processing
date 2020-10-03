@@ -10,6 +10,8 @@ represents the vertex with ID 1, which is connected to the vertices with IDs 2, 
 
 
 For example, following:
+
+
 3,2,1
 
 2,4,3
